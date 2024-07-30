@@ -1,6 +1,7 @@
 ### Import external module
 
 ## Config
+. ~/.windows-setup/.configs/.powershell.ps1
 . ~/.windows-setup/.configs/.oh-my-posh.ps1
 # . ~/.windows-setup/.configs/.starship.ps1
 . ~/.windows-setup/.configs/.zoxide.ps1

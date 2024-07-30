@@ -92,7 +92,14 @@
             "template": " \ueb06 {{ .Path }} ",
             "trailing_diamond": "<#1d4ed8>}</>",
             "type": "path"
-          },
+          }
+        ],
+        "type": "prompt"
+      },
+      {
+        "alignment": "left",
+        "newline": true,
+        "segments": [
           {
             "foreground": "#dc2626",
             "foreground_templates": ["{{ if gt .Code 0 }}#ff5555{{ end }}"],
