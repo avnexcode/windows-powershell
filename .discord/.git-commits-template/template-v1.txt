@@ -1,0 +1,53 @@
+***# Template Git Commits V1***
+
+**Commit all updates together**
+```
+git commit -am "
+
+folders:
+• /src/contoh
+
+files:
+• src/components/elements/file.test
+
+features:
+• filter price : create a new filter in the product session, specifically a price filter from the most expensive to the least expensive or vice versa, using the fastest algorithm.
+• search : any message
+
+package:
+• react-icon
+"
+```
+
+**Commit folders update**
+```
+git commit -am "
+folders:
+• /src/contoh
+"
+```
+
+**Commit files update**
+```
+git commit -am "
+files:
+• src/components/elements/file.test
+"
+```
+
+**Commit features update**
+```
+git commit -am "
+features:
+• filter price : create a new filter in the product session, specifically a price filter from the most expensive to the least expensive or vice versa, using the fastest algorithm.
+• search : any message
+"
+```
+
+**Commit package update**
+```
+git commit -am "
+package:
+• react-icons
+"
+```
