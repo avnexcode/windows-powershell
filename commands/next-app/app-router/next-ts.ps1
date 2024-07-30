@@ -5,6 +5,8 @@ function NextAppTs {
         [string]$Project_Name
     )
 
+    $Project_Name = $Project_Name.ToLower().Replace(" ", "_")
+
     pnpm create next-app@latest $Project_Name --ts --eslint --tailwind --src-dir --app --import-alias "@/*"
     Set-Location $Project_Name
     pnpm add axios @tanstack/react-query formik react-router-dom react-icons

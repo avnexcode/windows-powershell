@@ -4,6 +4,8 @@ function ReactViteTs {
         [string]$Project_Name
     )
 
+    $Project_Name = $Project_Name.ToLower().Replace(" ", "_")
+
     pnpm create vite $Project_Name --template react-ts
     Set-Location $Project_Name
     pnpm install
