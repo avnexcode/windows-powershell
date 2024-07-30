@@ -52,16 +52,16 @@ function Show-Commands {
             }
             13 { # Enter
                 switch ($selectedIndex) {
-                    0 { & $HOME/.windows-setup/commands/next-app/main.ps1; break}
-                    1 { & $HOME/.windows-setup/commands/vite-app/main.ps1; break}
-                    2 { & $HOME/.windows-setup/commands/php-app/main.ps1; break}
-                    3 { & $HOME/.windows-setup/commands/js-app/main.ps1; break}
+                    0 { & $HOME/.windows-setup/commands/next-app/main.ps1 }
+                    1 { & $HOME/.windows-setup/commands/vite-app/main.ps1 }
+                    2 { & $HOME/.windows-setup/commands/php-app/main.ps1 }
+                    3 { & $HOME/.windows-setup/commands/js-app/main.ps1 }
                     4 { 
                         $gitAliasesContent = Get-Content "$HOME/.windows-setup/commands/.git-aliases.ps1"
                         $gitAliasesContent | ForEach-Object { Write-Host $_ }
                         Read-Host "Press Enter to continue"
                     }
-                    5 { Write-Host "Exiting menu"; break }
+                    5 { Write-Host "Exiting menu"; return }
                 }
                 Show-Menu
             }

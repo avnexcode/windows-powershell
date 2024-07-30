@@ -54,7 +54,7 @@ Set-Location $Project_Name
 <body>
     <div id="root" class="flex justify-center items-center flex-col h-screen">
         <div class="flex">
-            <h1 class="text-[10rem] font-caveat">Crot</h1>
+            <h1 class="text-[10rem] font-caveat">PROT PROT</h1>
             <span class="text-3xl mt-[160px] font-caveat">By Avnexeed</span>
         </div>
         <div
@@ -138,5 +138,6 @@ module.exports = {
     $packageJsonContent | ConvertTo-Json | Set-Content -Path $packageJsonPath -Force
     code .
     ./index.html
-    pnpm dev
+   Start-Process "powershell" -ArgumentList "pnpm dev"
+    Start-Process "http://127.0.0.1:5500/"
 }

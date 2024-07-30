@@ -277,5 +277,7 @@ setInterval(() => {
     $packageJsonContent | ConvertTo-Json | Set-Content -Path $packageJsonPath -Force
     code .
     pnpm dev
+    php -S localhost:8000
+    Start-Process "localhost:8000"
     
 }

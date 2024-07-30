@@ -3,8 +3,8 @@
 . ~/.windows-setup/commands/vite-app/react-app/react-ts.ps1
 
 function Create-ViteApp {
-    $frameworkOptions = @("React", "Vue", "Svelte", "Vanilla")
-    $languageOptions = @("JavaScript (JS)", "TypeScript (TS)")
+    $frameworkOptions = @("React", "Vue", "Svelte", "Vanilla", "Back")
+    $languageOptions = @("JavaScript (JS)", "TypeScript (TS)", "Back")
     $selectedFrameworkIndex = 0
     $selectedLanguageIndex = 0
     $currentMenu = "framework"
@@ -20,7 +20,7 @@ function Create-ViteApp {
                     Write-Host "  $($frameworkOptions[$i])"
                 }
             }
-        } else {
+        } elseif ($currentMenu -eq "language") {
             Write-Host "Choose the language for your Vite app:"
             for ($i = 0; $i -lt $languageOptions.Count; $i++) {
                 if ($i -eq $selectedLanguageIndex) {
@@ -41,7 +41,7 @@ function Create-ViteApp {
                 if ($currentMenu -eq "framework") {
                     $selectedFrameworkIndex = ($selectedFrameworkIndex - 1) % $frameworkOptions.Count
                     if ($selectedFrameworkIndex -lt 0) { $selectedFrameworkIndex = $frameworkOptions.Count - 1 }
-                } else {
+                } elseif ($currentMenu -eq "language") {
                     $selectedLanguageIndex = ($selectedLanguageIndex - 1) % $languageOptions.Count
                     if ($selectedLanguageIndex -lt 0) { $selectedLanguageIndex = $languageOptions.Count - 1 }
                 }
@@ -50,50 +50,50 @@ function Create-ViteApp {
             40 { # Arrow Down
                 if ($currentMenu -eq "framework") {
                     $selectedFrameworkIndex = ($selectedFrameworkIndex + 1) % $frameworkOptions.Count
-                } else {
+                } elseif ($currentMenu -eq "language") {
                     $selectedLanguageIndex = ($selectedLanguageIndex + 1) % $languageOptions.Count
                 }
                 Show-Menu
             }
             13 { # Enter
                 if ($currentMenu -eq "framework") {
+                    if ($selectedFrameworkIndex -eq 4) { # Back
+                        return
+                    }
                     $currentMenu = "language"
                     Show-Menu
-                } else {
-                    $framework = $frameworkOptions[$selectedFrameworkIndex]
-                    $language = if ($selectedLanguageIndex -eq 0) { "js" } else { "ts" }
-                    $projectName = Read-Host "Enter the project name: "
+                } elseif ($currentMenu -eq "language") {
+                    if ($selectedLanguageIndex -eq 2) { # Back
+                        $currentMenu = "framework"
+                        Show-Menu
+                    } else {
+                        $framework = $frameworkOptions[$selectedFrameworkIndex]
+                        $language = if ($selectedLanguageIndex -eq 0) { "js" } elseif ($selectedLanguageIndex -eq 1) { "ts" } else { $null }
+                        $projectName = Read-Host "Enter the project name: "
 
-                    switch ($framework) {
-                        "React" {
-                            switch ($language) {
-                                "js" { ReactViteJs -Project_Name $projectName}
-                                "ts" { ReactViteTs -Project_Name $projectName}
+                        switch ($framework) {
+                            "React" {
+                                switch ($language) {
+                                    "js" { ReactViteJs -Project_Name $projectName }
+                                    "ts" { ReactViteTs -Project_Name $projectName }
+                                }
+                            }
+                            "Vue" {
+                                Write-Host "On development"
+                            }
+                            "Svelte" {
+                                Write-Host "On development"
+                            }
+                            "Vanilla" {
+                                Write-Host "On development"
                             }
                         }
-                        "Vue" {
-                            switch ($language) {
-                                "js" { Write-Host "On development" }
-                                "ts" { Write-Host "On development" }
-                            }
-                        }
-                        "Svelte" {
-                            switch ($language) {
-                                "js" { Write-Host "On development" }
-                                "ts" { Write-Host "On development" }
-                            }
-                        }
-                        "Vanilla" {
-                            switch ($language) {
-                                "js" { Write-Host "On development" }
-                                "ts" { Write-Host "On development" }
-                            }
-                        }
+                        return
                     }
-                    return
                 }
             }
         }
     }
 }
+
 Create-ViteApp
