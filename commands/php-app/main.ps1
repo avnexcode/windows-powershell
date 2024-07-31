@@ -43,7 +43,6 @@ function Create-PHPProject {
             13 { # Enter
                 $style = $styleOptions[$selectedStyleIndex].ToLower()
                 if ($style -eq "back") {
-                    # Execute the discommands function if "Back" is selected
                     discommands
                     return
                 }

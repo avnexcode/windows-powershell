@@ -1,16 +1,16 @@
 ### Import external module
 ## Config
-. ~/.windows-setup/configs/powershell.ps1
-. ~/.windows-setup/configs/oh-my-posh.ps1
-# . ~/.windows-setup/configs/starship.ps1
-. ~/.windows-setup/configs/zoxide.ps1
+# . $HOME/.windows-setup/configs/starship.ps1
+. $HOME/.windows-setup/configs/oh-my-posh.ps1
+. $HOME/.windows-setup/configs/zoxide.ps1
+. $HOME/.windows-setup/configs/powershell.ps1
 
 # Aliases
-. ~/.windows-setup/commands/aliases/git-aliases.ps1
-. ~/.windows-setup/commands/aliases/global-aliases.ps1
+. $HOME/.windows-setup/commands/aliases/git-aliases.ps1
+. $HOME/.windows-setup/commands/aliases/global-aliases.ps1
 
 # Others
-. ~/.windows-setup/secret/credentials-file.ps1
+. $HOME/.windows-setup/secret/credentials-file.ps1
 
 function Show-Commands {
     $options = @(
@@ -52,8 +52,8 @@ function Show-Commands {
             }
             13 { # Enter
                 switch ($selectedIndex) {
-                    0 { & $HOME/.windows-setup/commands/next-app/main.ps1 }
-                    1 { & $HOME/.windows-setup/commands/vite-app/main.ps1 }
+                    0 { & $HOME/.windows-setup/commands/next-app/options.ps1 }
+                    1 { & $HOME/.windows-setup/commands/vite-app/options.ps1 }  
                     2 { & $HOME/.windows-setup/commands/php-app/main.ps1 }
                     3 { & $HOME/.windows-setup/commands/js-app/main.ps1 }
                     4 { 

@@ -1,15 +1,15 @@
 # Next Page Typescript Function Builder
-function NextPageTs {
+function Next-Page-Tailwind-TS {
     param (
         [Parameter(Mandatory = $true)]
-        [string]"$Project_Name"
+        [string]$Project_Name
     )
 
     $Project_Name = $Project_Name.ToLower().Replace(" ", "_")
 
-    pnpm create next-app@latest "$Project_Name" --ts --eslint --tailwind --src-dir --no-app --import-alias "@/*"
+    pnpm create next-app@latest $Project_Name --ts --eslint --tailwind --src-dir --no-app --import-alias "@/*"
 
-    Set-Location "$Project_Name"
+    Set-Location $Project_Name
     pnpm add axios @tanstack/react-query formik react-router-dom react-icons
 
     "src/components/elements", "src/components/fragments", "src/components/layouts", "src/libs", "src/libs/axios", "src/features", "src/features/product", "src/features/user", "src/types", "public/assets/images", "public/assets/videos", "public/assets/audios" | ForEach-Object { New-Item -Path $_ -ItemType Directory -Force }

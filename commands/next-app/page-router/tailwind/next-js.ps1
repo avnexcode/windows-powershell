@@ -1,13 +1,14 @@
-# Next App Javascript Function Builder
-function NextAppJs {
+# Next Page Javascript Function Builder
+function Next-Page-Tailwind-JS {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Project_Name
     )
-    
+
     $Project_Name = $Project_Name.ToLower().Replace(" ", "_")
 
-    pnpm create next-app@latest $Project_Name --js --eslint --tailwind --src-dir --app --import-alias "@/*"
+    pnpm create next-app@latest $Project_Name --js --eslint --tailwind --src-dir --no-app --import-alias "@/*"
+
     Set-Location $Project_Name
     pnpm add axios @tanstack/react-query formik react-router-dom react-icons
 
@@ -19,19 +20,19 @@ export default function App() {
 <div className="bg-blue-500 text-white p-4 w-full h-screen flex justify-center items-center flex-col gap-5">
     <h1 className="text-3xl font-bold uppercase">Avnexcode</h1>
     <h1 className="text-3xl font-bold"><span className="uppercase">Prot Prot</span> Builder</h1>
-    <h1 className="text-3xl font-bold">Next JS App Router x TailwindCSS Builder</h1>
+    <h1 className="text-3xl font-bold">Next JS Page Router x TailwindCSS Builder</h1>
 </div>
     );
 }
 "@        
-    Set-Content -Path src\app\page.js -Value $appJsxContent
+    Set-Content -Path src\pages\index.js -Value $appJsxContent
 
     $indexCssContent = @"
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 "@
-    Set-Content -Path src\app\globals.css -Value $indexCssContent
+    Set-Content -Path src\styles\globals.css -Value $indexCssContent
     code .
     Start-Process "http://localhost:3000"
     pnpm run dev

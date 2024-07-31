@@ -1,5 +1,5 @@
 # Next App Typescript Function Builder
-function NextAppTs {
+function Next-App-Chakra-TS {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Project_Name

@@ -1,4 +1,4 @@
-function ReactViteJs {
+function React-Tailwind-JS {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Project_Name
