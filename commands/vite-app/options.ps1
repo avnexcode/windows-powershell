@@ -28,6 +28,12 @@ function Create-ViteApp {
     switch ($framework) {
         "react" { 
             switch ($style) {
+                "base" { 
+                    switch ($language) {
+                    "ts" { React-TS -Project_Name $projectName }
+                    "js" { React-JS -Project_Name $projectName }
+                }
+                }
                 "tailwind" { 
                     switch ($language) {
                     "ts" { React-Tailwind-TS -Project_Name $projectName }
@@ -36,8 +42,8 @@ function Create-ViteApp {
                 }
                 "chakra-ui" { 
                     switch ($language) {
-                    "ts" {  }
-                    "js" {  }
+                    "ts" { React-Chakra-TS -Project_Name $projectName }
+                    "js" { React-Chakra-JS -Project_Name $projectName }
                 }
                 }
                 "styled-components" { 
