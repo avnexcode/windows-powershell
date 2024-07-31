@@ -1,9 +1,5 @@
-# Import Module
-. ~/.windows-setup/commands/js-app/js-basic.ps1
-. ~/.windows-setup/commands/js-app/js-sass.ps1
-. ~/.windows-setup/commands/js-app/js-tailwind.ps1
-
 function Create-JSProject {
+    . $HOME/.windows-setup/commands/js-app/modules-import.ps1
     $styleOptions = @("Basic", "Sass", "Tailwind", "Back")
     $selectedStyleIndex = 0
     $currentMenu = "style"
@@ -46,7 +42,7 @@ function Create-JSProject {
                         return
                     }
                     $style = $styleOptions[$selectedStyleIndex].ToLower()
-                    $projectName = Read-Host "Enter the project name: "
+                    $projectName = Read-Host "Enter the project name"
 
                     switch ($style) {
                         "basic" { JSBasic -Project_Name $projectName }

@@ -51,6 +51,5 @@ export default {
 "@
     Set-Content -Path src\index.css -Value $indexCssContent
     code .
-    Start-Process "http://localhost:5173"
     pnpm run dev
 }

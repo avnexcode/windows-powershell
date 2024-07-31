@@ -1,4 +1,3 @@
-# Next Page Typescript Function Builder
 function Next-Page-Tailwind-TS {
     param (
         [Parameter(Mandatory = $true)]
@@ -34,6 +33,5 @@ export default function App() {
 "@
     Set-Content -Path src\styles\globals.css -Value $indexCssContent
     code .
-    Start-Process "http://localhost:3000"
     pnpm run dev
 }

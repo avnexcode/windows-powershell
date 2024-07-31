@@ -26,7 +26,8 @@ function Show-Commands {
 
     function Show-Menu {
         Clear-Host
-        Write-Host "Select an action to run (use arrow keys to navigate and Enter to select):"
+        Write-Host "Malas Setup sendiri dek?"
+        Write-Host "Select an action to run (use arrow keys to navigate and Enter to select): "
         for ($i = 0; $i -lt $options.Count; $i++) {
             if ($i -eq $selectedIndex) {
                 Write-Host "> $($options[$i])" -ForegroundColor Cyan
@@ -54,8 +55,8 @@ function Show-Commands {
                 switch ($selectedIndex) {
                     0 { & $HOME/.windows-setup/commands/next-app/options.ps1 }
                     1 { & $HOME/.windows-setup/commands/vite-app/options.ps1 }  
-                    2 { & $HOME/.windows-setup/commands/php-app/main.ps1 }
-                    3 { & $HOME/.windows-setup/commands/js-app/main.ps1 }
+                    2 { & $HOME/.windows-setup/commands/php-app/options.ps1 }
+                    3 { & $HOME/.windows-setup/commands/js-app/options.ps1 }
                     4 { 
                         $gitAliasesContent = Get-Content "$HOME/.windows-setup/commands/.git-aliases.ps1"
                         $gitAliasesContent | ForEach-Object { Write-Host $_ }

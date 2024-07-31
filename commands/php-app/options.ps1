@@ -1,9 +1,5 @@
-# Import Module
-. ~/.windows-setup/commands/php-app/php-basic.ps1
-. ~/.windows-setup/commands/php-app/php-sass.ps1
-. ~/.windows-setup/commands/php-app/php-tailwind.ps1
-
 function Create-PHPProject {
+    . $HOME/.windows-setup/commands/php-app/modules-import.ps1
     $styleOptions = @("Basic", "Sass", "Tailwind", "Back")
     $selectedStyleIndex = 0
     $currentMenu = "style"
@@ -42,10 +38,9 @@ function Create-PHPProject {
             }
             13 { # Enter
                 $style = $styleOptions[$selectedStyleIndex].ToLower()
-                if ($style -eq "back") {
-                    discommands
-                    return
-                }
+                if ($selectedStyleIndex -eq 3) { # Back
+                        return
+                    }
                 $projectName = Read-Host "Enter the project name"
                 
                 switch ($style) {
