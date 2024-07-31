@@ -14,6 +14,7 @@ function React-TS {
     "src/components/elements", "src/components/fragments", "src/components/layouts", "src/libs", "src/libs/axios", "src/features", "src/features/product", "src/features/user", "src/types", "src/pages", "public/assets/images", "public/assets/videos", "public/assets/audios" | ForEach-Object { New-Item -Path $_ -ItemType Directory -Force }
 
     Remove-Item -Path src\App.css
+    New-Item -Path src\components\Providers.tsx
 
     $appTsxContent = @"
 export default function App() {
@@ -26,10 +27,46 @@ export default function App() {
     );
 }
 "@
-    Set-Content -Path src\App.tsx -Value $appTsxContent
+
+    $providersTsxContent = @"
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
+
+type ProvidersProps = {
+    children: React.ReactNode
+}
+
+export default function Providers({ children }: ProvidersProps) {
+    return (
+        <QueryClientProvider client={queryClient}>
+            {children}
+        </QueryClientProvider>
+    )
+}
+"@
+
+    $mainTsxContent = @"
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.tsx'
+import './index.css'
+import Providers from "./components/Providers.tsx"
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <Providers>
+      <App />
+    </Providers>
+  </React.StrictMode>,
+)
+"@
 
     $indexCssContent = @"
 "@
+    Set-Content -Path src\App.tsx -Value $appTsxContent
+    Set-Content -Path src\components\Providers.tsx -Value $providersTsxContent
+    Set-Content -Path src\main.tsx -Value $mainTsxContent
     Set-Content -Path src\index.css -Value $indexCssContent
     code .
     pnpm run dev

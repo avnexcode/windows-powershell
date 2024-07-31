@@ -44,7 +44,7 @@ export default {
 }
 "@
 
-    $providersJsxContent = @"
+    $providersTsxContent = @"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const queryClient = new QueryClient()
@@ -62,7 +62,7 @@ export default function Providers({ children }: ProvidersProps) {
 }
 "@
     
-    $mainJsxContent = @"
+    $mainTsxContent = @"
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
@@ -85,8 +85,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 "@
     Set-Content -Path src\App.tsx -Value $appTsxContent
     Set-Content -Path tailwind.config.js -Value $tailwindConfigContent
-    Set-Content -Path src\components\Providers.tsx -Value $providersJsxContent
-    Set-Content -Path src\main.tsx -Value $mainJsxContent
+    Set-Content -Path src\components\Providers.tsx -Value $providersTsxContent
+    Set-Content -Path src\main.tsx -Value $mainTsxContent
     Set-Content -Path src\index.css -Value $indexCssContent
 
     code .

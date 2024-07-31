@@ -16,7 +16,7 @@ function React-Tailwind-JS {
     "src/components/elements", "src/components/fragments", "src/components/layouts", "src/libs", "src/libs/axios", "src/features", "src/features/product", "src/features/user", "src/pages", "public/assets/images", "public/assets/videos", "public/assets/audios" | ForEach-Object { New-Item -Path $_ -ItemType Directory -Force }
 
     Remove-Item -Path src\App.css
-    New-Item -Path src\components\Providers.tsx
+    New-Item -Path src\components\Providers.jsx
 
     $appJsxContent = @"
 export default function App() {
@@ -82,8 +82,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 "@
     Set-Content -Path src\App.jsx -Value $appJsxContent
     Set-Content -Path tailwind.config.js -Value $tailwindConfigContent
-    Set-Content -Path src\components\Providers.tsx -Value $providersJsxContent
-    Set-Content -Path src\main.tsx -Value $mainJsxContent
+    Set-Content -Path src\components\Providers.jsx -Value $providersJsxContent
+    Set-Content -Path src\main.jsx -Value $mainJsxContent
     Set-Content -Path src\index.css -Value $indexCssContent
     code .
     pnpm run dev
