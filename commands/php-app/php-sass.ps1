@@ -1,5 +1,5 @@
-. ~/.windows-setup/commands/php-app/directory.ps1
-function PHPSass() {
+. ~/.windows-setup/commands/php-app/Directory.ps1
+function PHP-Sass {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Project_Name

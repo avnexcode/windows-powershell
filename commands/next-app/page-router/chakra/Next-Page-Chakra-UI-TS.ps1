@@ -1,4 +1,4 @@
-function Next-Page-Chakra-TS {
+function Next-Page-Chakra-UI-TS {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Project_Name

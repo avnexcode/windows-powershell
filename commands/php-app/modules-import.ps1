@@ -1,4 +1,4 @@
 # Import Module
-. ~/.windows-setup/commands/php-app/php-basic.ps1
-. ~/.windows-setup/commands/php-app/php-sass.ps1
-. ~/.windows-setup/commands/php-app/php-tailwind.ps1
+. $HOME/.windows-setup/commands/php-app/PHP-Basic.ps1
+. $HOME/.windows-setup/commands/php-app/PHP-Sass.ps1
+. $HOME/.windows-setup/commands/php-app/PHP-Tailwind.ps1

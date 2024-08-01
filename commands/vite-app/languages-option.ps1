@@ -3,17 +3,18 @@ function Choose-Language {
         [string]$Framework
     )
 
-    $languageOptions = @("TypeScript", "JavaScript", "Back")
+    $languageOptions = @("TS", "JS", "Back")
     $selectedIndex = 0
 
     function Show-Menu {
         Clear-Host
         Write-Host "Choose the language for your $Framework app:"
         for ($i = 0; $i -lt $languageOptions.Count; $i++) {
+            $displayOption = if ($languageOptions[$i] -eq "TS") { "TypeScript" } elseif ($languageOptions[$i] -eq "JS") { "JavaScript" } else { $languageOptions[$i] }
             if ($i -eq $selectedIndex) {
-                Write-Host "> $($languageOptions[$i])" -ForegroundColor Cyan
+                Write-Host "> $displayOption" -ForegroundColor Cyan
             } else {
-                Write-Host "  $($languageOptions[$i])"
+                Write-Host "  $displayOption"
             }
         }
     }

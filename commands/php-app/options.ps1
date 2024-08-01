@@ -1,5 +1,5 @@
 function Create-PHPProject {
-    . $HOME/.windows-setup/commands/php-app/modules-import.ps1
+    . $HOME/.windows-setup/commands/php-app/Modules-Import.ps1
     $styleOptions = @("Basic", "Sass", "Tailwind", "Back")
     $selectedStyleIndex = 0
     $currentMenu = "style"
@@ -44,14 +44,12 @@ function Create-PHPProject {
                 $projectName = Read-Host "Enter the project name"
                 
                 switch ($style) {
-                    "basic" { PHPBasic -Project_Name $projectName }
-                    "sass" { PHPSass -Project_Name $projectName }
-                    "tailwind" { PHPTailwind -Project_Name $projectName }
+                    "basic" { PHP-Basic -Project_Name $projectName }
+                    "sass" { PHP-Sass -Project_Name $projectName }
+                    "tailwind" { PHP-Tailwind -Project_Name $projectName }
                 }
                 return
             }
         }
     }
 }
-
-Create-PHPProject

@@ -1,5 +1,5 @@
 function Create-JSProject {
-    . $HOME/.windows-setup/commands/js-app/modules-import.ps1
+    . $HOME/.windows-setup/commands/js-app/Modules-import.ps1
     $styleOptions = @("Basic", "Sass", "Tailwind", "Back")
     $selectedStyleIndex = 0
     $currentMenu = "style"
@@ -45,9 +45,9 @@ function Create-JSProject {
                     $projectName = Read-Host "Enter the project name"
 
                     switch ($style) {
-                        "basic" { JSBasic -Project_Name $projectName }
-                        "sass" { JSSass -Project_Name $projectName }
-                        "tailwind" { JSTailwind -Project_Name $projectName }
+                        "basic" { JS-Basic -Project_Name $projectName }
+                        "sass" { JS-Sass -Project_Name $projectName }
+                        "tailwind" { JS-Tailwind -Project_Name $projectName }
                     }
                     return
                 }
@@ -55,5 +55,3 @@ function Create-JSProject {
         }
     }
 }
-
-Create-JSProject

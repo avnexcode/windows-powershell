@@ -1,4 +1,4 @@
-function React-Chakra-TS {
+function React-Chakra-UI-TS {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Project_Name

@@ -1,4 +1,4 @@
-function JSBasic() {
+function JS-Basic() {
   param (
     [Parameter(Mandatory = $true)]
     [string]$Project_Name

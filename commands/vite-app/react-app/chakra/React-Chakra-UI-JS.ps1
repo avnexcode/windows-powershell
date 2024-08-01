@@ -1,4 +1,4 @@
-function React-JS {
+function React-Chakra-UI-JS {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Project_Name
@@ -9,7 +9,7 @@ function React-JS {
     pnpm create vite $Project_Name --template react
     Set-Location $Project_Name
     pnpm install
-    pnpm add axios @tanstack/react-query formik react-router-dom react-icons
+    pnpm add @chakra-ui/react @emotion/react @emotion/styled framer-motion axios @tanstack/react-query formik react-router-dom react-icons
 
     "src/components/elements", "src/components/fragments", "src/components/layouts", "src/libs", "src/libs/axios", "src/features", "src/features/product", "src/features/user", "src/pages", "public/assets/images", "public/assets/videos", "public/assets/audios" | ForEach-Object { New-Item -Path $_ -ItemType Directory -Force }
 
@@ -17,19 +17,34 @@ function React-JS {
     New-Item -Path src\components\Providers.jsx
 
     $appJsxContent = @"
+import { Heading, Text, Flex } from '@chakra-ui/react';
+import { ListItem, UnorderedList } from '@chakra-ui/react'
 export default function App() {
     return (
-        <div className="bg-blue-500 text-white p-4 w-full h-screen flex justify-center items-center flex-col gap-5">
-            <h1 className="text-3xl font-bold uppercase">Avnexcode</h1>
-            <h1 className="text-3xl font-bold"><span className="uppercase">Prot Prot</span> Builder</h1>
-            <h1 className="text-3xl font-bold">React JS Vite x TailwindCSS Builder</h1>
-        </div>
+        <Flex w={"100%"} h={"100vh"} justify={"center"} align={"center"} direction={"column"} gap={"10px"}>
+            <Flex direction={"column"} gap={5} align={"center"}>
+                <Heading color={"red"}>ReactVite JS x Chakra</Heading>
+                <Text fontSize={"1.5rem"}>Build with 💖 by Avnexcode</Text>
+            </Flex>
+            <Flex>
+                <Heading>Installed Dependencies:</Heading>
+            </Flex>
+            <Flex>
+                <UnorderedList fontSize={"1.3rem"}>
+                    <ListItem>Chakra UI</ListItem>
+                    <ListItem>Tanstack Query, Axios, Formik</ListItem>
+                    <ListItem>React Icons</ListItem>
+                    <ListItem>React Router DOM</ListItem>
+                </UnorderedList>
+            </Flex>
+        </Flex>
     );
 }
 "@
 
     $providersJsxContent = @"
 /* eslint-disable react/prop-types */
+import { ChakraProvider } from '@chakra-ui/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const queryClient = new QueryClient()
@@ -37,7 +52,9 @@ const queryClient = new QueryClient()
 export default function Providers({ children }) {
     return (
         <QueryClientProvider client={queryClient}>
-            {children}
+            <ChakraProvider>
+                {children}
+            </ChakraProvider>
         </QueryClientProvider>
     )
 }
@@ -65,6 +82,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     Set-Content -Path src\components\Providers.jsx -Value $providersJsxContent
     Set-Content -Path src\main.jsx -Value $mainJsxContent
     Set-Content -Path src\index.css -Value $indexCssContent
+
     code .
     pnpm run dev
 }

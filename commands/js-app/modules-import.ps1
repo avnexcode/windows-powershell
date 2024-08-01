@@ -1,3 +1,3 @@
-. ~/.windows-setup/commands/js-app/js-basic.ps1
-. ~/.windows-setup/commands/js-app/js-sass.ps1
-. ~/.windows-setup/commands/js-app/js-tailwind.ps1
+. $HOME/.windows-setup/commands/js-app/JS-Basic.ps1
+. $HOME/.windows-setup/commands/js-app/JS-Sass.ps1
+. $HOME/.windows-setup/commands/js-app/JS-Tailwind.ps1

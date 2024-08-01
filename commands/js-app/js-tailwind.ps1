@@ -1,4 +1,4 @@
-function JSTailwind() {
+function JS-Tailwind() {
   param (
     [Parameter(Mandatory = $true)]
     [string]$Project_Name

@@ -2,7 +2,7 @@ function Choose-Style {
     param (
         [string]$Framework
     )
-    $styleOptions = @("Base", "Tailwind", "Chakra UI", "Styled Components", "Back")
+    $styleOptions = @("Base", "Tailwind", "Chakra-UI", "Styled-Components", "Back")
     $selectedIndex = 0
 
     function Show-Menu {

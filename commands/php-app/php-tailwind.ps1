@@ -1,6 +1,6 @@
 # Include Directory
-. ~/.windows-setup/commands/php-app/directory.ps1
-function PHPTailwind() {
+. ~/.windows-setup/commands/php-app/Directory.ps1
+function PHP-Tailwind {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Project_Name

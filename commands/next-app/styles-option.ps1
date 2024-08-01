@@ -1,5 +1,5 @@
 function Choose-Style {
-    $styleOptions = @("Tailwind", "Chakra UI", "Styled Components", "Back")
+    $styleOptions = @("Tailwind", "Chakra-UI", "Styled-Components", "Back")
     $selectedIndex = 0
 
     function Show-Menu {

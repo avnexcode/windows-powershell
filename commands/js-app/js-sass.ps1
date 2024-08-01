@@ -1,4 +1,4 @@
-function JSSass () {
+function JS-Sass () {
   param (
     [Parameter(Mandatory = $true)]
     [string]$Project_Name

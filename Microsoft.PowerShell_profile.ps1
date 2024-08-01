@@ -1,17 +1,4 @@
-### Import external module
-## Config
-# . $HOME/.windows-setup/configs/starship.ps1
-. $HOME/.windows-setup/configs/oh-my-posh.ps1
-. $HOME/.windows-setup/configs/zoxide.ps1
-. $HOME/.windows-setup/configs/powershell.ps1
-
-# Aliases
-. $HOME/.windows-setup/commands/aliases/git-aliases.ps1
-. $HOME/.windows-setup/commands/aliases/global-aliases.ps1
-
-# Others
-. $HOME/.windows-setup/secret/credentials-file.ps1
-
+. $HOME/.windows-setup/Modules-Import.ps1
 function Show-Commands {
     $options = @(
         "1. Create Next App",
@@ -53,10 +40,10 @@ function Show-Commands {
             }
             13 { # Enter
                 switch ($selectedIndex) {
-                    0 { & $HOME/.windows-setup/commands/next-app/options.ps1 }
-                    1 { & $HOME/.windows-setup/commands/vite-app/options.ps1 }  
-                    2 { & $HOME/.windows-setup/commands/php-app/options.ps1 }
-                    3 { & $HOME/.windows-setup/commands/js-app/options.ps1 }
+                    0 { Create-NextApp }
+                    1 { Create-ViteApp }  
+                    2 { Create-PHPProject }
+                    3 { Create-JSProject }
                     4 { 
                         $gitAliasesContent = Get-Content "$HOME/.windows-setup/commands/.git-aliases.ps1"
                         $gitAliasesContent | ForEach-Object { Write-Host $_ }
@@ -69,5 +56,4 @@ function Show-Commands {
         }
     }
 }
-
 Set-Alias discommands Show-Commands
