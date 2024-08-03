@@ -1,4 +1,4 @@
-function Choose-Style {
+function ChooseStyle {
     $styleOptions = @("Tailwind", "Chakra-UI", "Styled-Components", "Back")
     $selectedIndex = 0
 

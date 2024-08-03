@@ -1,4 +1,4 @@
-function Execute-ViteAppCommand {
+function Initialize-ViteAppCommand {
     param (
         [string]$Framework,
         [string]$Style,
@@ -6,7 +6,7 @@ function Execute-ViteAppCommand {
         [string]$ProjectName
     )
 
-    $functionName = "$Framework-$Style-$Language"
+    $functionName = "$Framework$Style$Language"
 
     $function = Get-Command -Name $functionName -ErrorAction SilentlyContinue
 

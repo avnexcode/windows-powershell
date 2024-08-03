@@ -1,4 +1,4 @@
-function React-Base-TS {
+function ReactBaseTS {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Project_Name

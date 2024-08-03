@@ -1,4 +1,4 @@
-function Choose-Style {
+function ChooseStyle {
     param (
         [string]$Framework
     )

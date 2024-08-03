@@ -1,16 +1,16 @@
-function Create-NextApp {
+function Initialize-NextApp {
     . $HOME/.windows-setup/commands/next-app/Modules-Import.ps1
     
     while ($true) {
-        $selectedRouter = Choose-Router
+        $selectedRouter = ChooseRouter
         if ($selectedRouter -eq "Back") { return }
 
         while ($true) {
-            $selectedStyle = Choose-Style
+            $selectedStyle = ChooseStyle
             if ($selectedStyle -eq "Back") { break }
 
             while ($true) {
-                $selectedLanguage = Choose-Language
+                $selectedLanguage = ChooseLanguage
                 if ($selectedLanguage -eq "Back") { break }
 
                 $projectName = Read-Host "Enter the project name"
@@ -19,7 +19,7 @@ function Create-NextApp {
                 $style = $selectedStyle.ToLower().Replace(" ", "-")
                 $language = $selectedLanguage
                 
-                Execute-NextAppCommand -Router $router -Style $style -Language $language -ProjectName $projectName
+                Initialize-NextAppCommand -Router $router -Style $style -Language $language -ProjectName $projectName
                 return
             }
         }

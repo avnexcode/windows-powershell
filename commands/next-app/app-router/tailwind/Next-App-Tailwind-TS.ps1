@@ -1,4 +1,4 @@
-function Next-App-Tailwind-TS {
+function NextAppTailwindTS {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Project_Name

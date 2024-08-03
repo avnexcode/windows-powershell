@@ -1,4 +1,4 @@
-function Next-App-Chakra-UI-TS {
+function NextAppChakraUITS {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Project_Name

@@ -1,4 +1,4 @@
-function Choose-Framework {
+function ChooseFramework {
     
     $frameworkOptions = @("React", "Vue", "Svelte", "Vanilla", "Back")
     $selectedIndex = 0

@@ -1,4 +1,4 @@
-function Next-Page-Tailwind-JS {
+function NextPageTailwindJS {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Project_Name

@@ -1,13 +1,13 @@
-function JS-Sass () {
-  param (
-    [Parameter(Mandatory = $true)]
-    [string]$Project_Name
-)
+function JSSass () {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$Project_Name
+    )
 
-$Project_Name = $Project_Name.ToLower().Replace(" ", "_")
+    $Project_Name = $Project_Name.ToLower().Replace(" ", "_")
 
-mkdir $Project_Name
-Set-Location $Project_Name
+    mkdir $Project_Name
+    Set-Location $Project_Name
 
     New-Item index.html
     New-Item README.MD

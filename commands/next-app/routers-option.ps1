@@ -1,4 +1,4 @@
-function Choose-Router {
+function ChooseRouter {
     $routerOptions = @("App Router", "Pages Router", "Back")
     $selectedIndex = 0
 

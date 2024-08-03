@@ -1,4 +1,3 @@
-### Import external module
 ## Config
 # . $HOME/.windows-setup/configs/Starship.ps1
 . $HOME/.windows-setup/configs/Oh-My-Posh.ps1

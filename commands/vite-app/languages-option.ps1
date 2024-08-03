@@ -1,4 +1,4 @@
-function Choose-Language {
+function ChooseLanguage {
     param (
         [string]$Framework
     )

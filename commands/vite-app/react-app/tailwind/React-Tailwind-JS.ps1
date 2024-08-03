@@ -1,4 +1,4 @@
-function React-Tailwind-JS {
+function ReactTailwindJS {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Project_Name

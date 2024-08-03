@@ -1,4 +1,4 @@
-function React-Base-JS {
+function ReactBaseJS {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Project_Name

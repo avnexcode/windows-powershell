@@ -1,39 +1,39 @@
-function JS-Tailwind() {
+function JSTailwind() {
   param (
     [Parameter(Mandatory = $true)]
     [string]$Project_Name
-)
+  )
 
-$Project_Name = $Project_Name.ToLower().Replace(" ", "_")
+  $Project_Name = $Project_Name.ToLower().Replace(" ", "_")
 
-mkdir $Project_Name
-Set-Location $Project_Name
+  mkdir $Project_Name
+  Set-Location $Project_Name
 
-    New-Item index.html
-    New-Item README.MD
+  New-Item index.html
+  New-Item README.MD
 
-    Write-Output "# Project Name" >> README.md
-    Write-Output "This is a project structure by MFNA." >> README.md
+  Write-Output "# Project Name" >> README.md
+  Write-Output "This is a project structure by MFNA." >> README.md
 
-    mkdir ./public/assets/image
-    mkdir ./public/assets/video
-    mkdir ./public/assets/audio
+  mkdir ./public/assets/image
+  mkdir ./public/assets/video
+  mkdir ./public/assets/audio
 
-    mkdir ./template
-    mkdir ./src/css
-    mkdir ./src/js
-    mkdir ./src/pages
+  mkdir ./template
+  mkdir ./src/css
+  mkdir ./src/js
+  mkdir ./src/pages
 
-    New-Item ./src/css/main.css
-    New-Item ./src/css/input.css
-    New-Item ./src/js/app.js
+  New-Item ./src/css/main.css
+  New-Item ./src/css/input.css
+  New-Item ./src/js/app.js
 
-    pnpm init -p
-    pnpm install -D tailwindcss
-    npx tailwindcss init
+  pnpm init -p
+  pnpm install -D tailwindcss
+  npx tailwindcss init
 
-    # set index.html
-    $htmlContent = @"
+  # set index.html
+  $htmlContent = @"
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,19 +66,19 @@ Set-Location $Project_Name
 
 </html>
 "@
-    $htmlContent | Add-Content -Path index.html
-    # set main.scss
-    $inputCssContent = @"
+  $htmlContent | Add-Content -Path index.html
+  # set main.scss
+  $inputCssContent = @"
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Caveat&family=Onest:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 "@
-    $inputCssContent | Add-Content -Path ./src/css/input.css
+  $inputCssContent | Add-Content -Path ./src/css/input.css
 
-    # set js
-    $jsContent = @"
+  # set js
+  $jsContent = @"
 const root = document.getElementById("root")
 setInterval(function(){
     const clock = document.querySelector(".display");
@@ -106,9 +106,9 @@ setInterval(function(){
     clock.textContent = hr + ':' + min + ':' + sec + " " + day;
   });
 "@
-    $jsContent | Add-Content -Path ./src/js/app.js
+  $jsContent | Add-Content -Path ./src/js/app.js
 
-    $configContent = @"
+  $configContent = @"
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["index.html", "./src/pages/**/*.{html}"],
@@ -126,18 +126,18 @@ module.exports = {
 
 "@
 
-    $configContent | Set-Content -Path tailwind.config.js
+  $configContent | Set-Content -Path tailwind.config.js
 
-    # del test
-    $packageJsonPath = "package.json"
-    $packageJsonContent = Get-Content -Raw $packageJsonPath | ConvertFrom-Json
-    $null = $packageJsonContent.PSObject.Properties.Remove( '"test": "echo \"Error: no test specified\" && exit 1",')
-    # set dev
-    $packageJsonContent.scripts | Add-Member -MemberType NoteProperty -Name "dev" -Value "npx tailwindcss -i ./src/css/input.css -o ./src/css/main.css --watch"
-    # rewrite json
-    $packageJsonContent | ConvertTo-Json | Set-Content -Path $packageJsonPath -Force
-    code .
-    ./index.html
-   Start-Process "powershell" -ArgumentList "pnpm dev"
-    Start-Process "http://127.0.0.1:5500/"
+  # del test
+  $packageJsonPath = "package.json"
+  $packageJsonContent = Get-Content -Raw $packageJsonPath | ConvertFrom-Json
+  $null = $packageJsonContent.PSObject.Properties.Remove( '"test": "echo \"Error: no test specified\" && exit 1",')
+  # set dev
+  $packageJsonContent.scripts | Add-Member -MemberType NoteProperty -Name "dev" -Value "npx tailwindcss -i ./src/css/input.css -o ./src/css/main.css --watch"
+  # rewrite json
+  $packageJsonContent | ConvertTo-Json | Set-Content -Path $packageJsonPath -Force
+  code .
+  ./index.html
+  Start-Process "powershell" -ArgumentList "pnpm dev"
+  Start-Process "http://127.0.0.1:5500/"
 }

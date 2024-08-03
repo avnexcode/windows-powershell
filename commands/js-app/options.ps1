@@ -1,4 +1,4 @@
-function Create-JSProject {
+function Initialize-JSProject {
     . $HOME/.windows-setup/commands/js-app/Modules-import.ps1
     $styleOptions = @("Basic", "Sass", "Tailwind", "Back")
     $selectedStyleIndex = 0
@@ -11,7 +11,8 @@ function Create-JSProject {
             for ($i = 0; $i -lt $styleOptions.Count; $i++) {
                 if ($i -eq $selectedStyleIndex) {
                     Write-Host "> $($styleOptions[$i])" -ForegroundColor Cyan
-                } else {
+                }
+                else {
                     Write-Host "  $($styleOptions[$i])"
                 }
             }
@@ -23,31 +24,35 @@ function Create-JSProject {
     while ($true) {
         $key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
         switch ($key.VirtualKeyCode) {
-            38 { # Arrow Up
+            38 {
+                # Arrow Up
                 if ($currentMenu -eq "style") {
                     $selectedStyleIndex = ($selectedStyleIndex - 1) % $styleOptions.Count
                     if ($selectedStyleIndex -lt 0) { $selectedStyleIndex = $styleOptions.Count - 1 }
                 }
                 Show-Menu
             }
-            40 { # Arrow Down
+            40 {
+                # Arrow Down
                 if ($currentMenu -eq "style") {
                     $selectedStyleIndex = ($selectedStyleIndex + 1) % $styleOptions.Count
                 }
                 Show-Menu
             }
-            13 { # Enter
+            13 {
+                # Enter
                 if ($currentMenu -eq "style") {
-                    if ($selectedStyleIndex -eq 3) { # Back
+                    if ($selectedStyleIndex -eq 3) {
+                        # Back
                         return
                     }
                     $style = $styleOptions[$selectedStyleIndex].ToLower()
                     $projectName = Read-Host "Enter the project name"
 
                     switch ($style) {
-                        "basic" { JS-Basic -Project_Name $projectName }
-                        "sass" { JS-Sass -Project_Name $projectName }
-                        "tailwind" { JS-Tailwind -Project_Name $projectName }
+                        "basic" { JSBase -Project_Name $projectName }
+                        "sass" { JSSass -Project_Name $projectName }
+                        "tailwind" { JSTailwind -Project_Name $projectName }
                     }
                     return
                 }

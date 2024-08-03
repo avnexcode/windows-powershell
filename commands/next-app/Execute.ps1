@@ -1,4 +1,4 @@
-function Execute-NextAppCommand {
+function Initialize-NextAppCommand {
     param (
         [string]$Router,
         [string]$Style,
@@ -6,9 +6,7 @@ function Execute-NextAppCommand {
         [string]$ProjectName
     )
 
-    $functionName = "Next-$Router-$Style-$Language"
-
-    echo $functionName
+    $functionName = "Next$Router$Style$Language"
 
     $function = Get-Command -Name $functionName -ErrorAction SilentlyContinue
 

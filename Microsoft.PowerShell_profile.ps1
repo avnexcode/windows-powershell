@@ -40,10 +40,10 @@ function Show-Commands {
             }
             13 { # Enter
                 switch ($selectedIndex) {
-                    0 { Create-NextApp }
-                    1 { Create-ViteApp }  
-                    2 { Create-PHPProject }
-                    3 { Create-JSProject }
+                    0 { Initialize-NextApp }
+                    1 { Initialize-ViteApp }  
+                    2 { Initialize-PHPProject }
+                    3 { Initialize-JSProject }
                     4 { 
                         $gitAliasesContent = Get-Content "$HOME/.windows-setup/commands/.git-aliases.ps1"
                         $gitAliasesContent | ForEach-Object { Write-Host $_ }

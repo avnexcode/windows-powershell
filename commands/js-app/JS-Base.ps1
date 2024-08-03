@@ -1,19 +1,19 @@
-function JS-Basic() {
+function JSBase() {
   param (
     [Parameter(Mandatory = $true)]
     [string]$Project_Name
-)
+  )
 
-$Project_Name = $Project_Name.ToLower().Replace(" ", "_")
+  $Project_Name = $Project_Name.ToLower().Replace(" ", "_")
 
-mkdir $Project_Name
-Set-Location $Project_Name
+  mkdir $Project_Name
+  Set-Location $Project_Name
 
-    New-Item index.html
-    New-Item main.css
-    New-Item app.js
+  New-Item index.html
+  New-Item main.css
+  New-Item app.js
 
-    $htmlContent = @"
+  $htmlContent = @"
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,8 +69,8 @@ Set-Location $Project_Name
 
 </html>
 "@
-    $htmlContent | Add-Content -Path index.html
-    $cssContent = @"
+  $htmlContent | Add-Content -Path index.html
+  $cssContent = @"
 @import url("https://fonts.googleapis.com/css2?family=Caveat&family=Onest:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
@@ -372,8 +372,8 @@ div.intro span {
 }
 
 "@
-    $cssContent | Add-Content -Path main.css
-    $jsContent = @"
+  $cssContent | Add-Content -Path main.css
+  $jsContent = @"
 const root = document.getElementById("root");
 const sec = document.querySelector(".sec");
 const min = document.querySelector(".min");
@@ -391,8 +391,8 @@ setInterval(function () {
 
 "@
 
-$jsContent | Set-Content -Path "app.js" -Encoding UTF8
+  $jsContent | Set-Content -Path "app.js" -Encoding UTF8
 
-    code .
-    ./index.html
+  code .
+  ./index.html
 }

@@ -1,4 +1,4 @@
-function Choose-Language {
+function ChooseLanguage {
     $languageOptions = @("TS", "JS", "Back")
     $selectedIndex = 0
 
