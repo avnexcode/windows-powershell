@@ -4,6 +4,8 @@
 . $HOME/.windows-setup/commands/vite-app/Execute.ps1
     
 ### React
+## Package
+. $HOME/.windows-setup/commands/package/React-Package.ps1
 ## Base
 . $HOME/.windows-setup/commands/vite-app/react-app/base/React-Base-JS.ps1
 . $HOME/.windows-setup/commands/vite-app/react-app/base/React-Base-TS.ps1

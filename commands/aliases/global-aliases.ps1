@@ -46,32 +46,6 @@ function g {
     }
 }
 
-function dup {
-    param (
-        [Parameter(Mandatory = $false, ValueFromRemainingArguments = $true)]
-        [string[]]$Command
-    )
-
-    if ($null -eq $Command -or $Command.Count -eq 0) {
-        docker-compose up
-    } else {
-        docker-compose up @Command
-    }
-}
-
-function ddown {
-    param (
-        [Parameter(Mandatory = $false, ValueFromRemainingArguments = $true)]
-        [string[]]$Command
-    )
-
-    if ($null -eq $Command -or $Command.Count -eq 0) {
-        docker-compose down
-    } else {
-        docker-compose down @Command
-    }
-}
-
 function pingg {
     ping 8.8.8.8 -t
 }

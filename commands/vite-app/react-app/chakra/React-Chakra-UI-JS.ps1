@@ -4,17 +4,19 @@ function ReactChakraUIJS {
         [string]$Project_Name
     )
 
-    $Project_Name = $Project_Name.ToLower().Replace(" ", "_")
+    $Project_Name = $Project_Name.ToLower().Replace(" ", "-")
 
     pnpm create vite $Project_Name --template react
     Set-Location $Project_Name
     pnpm install
-    pnpm add @chakra-ui/react @emotion/react @emotion/styled framer-motion axios @tanstack/react-query formik react-router-dom react-icons
+    # Style Installer
+    pnpm add @chakra-ui/react @emotion/react @emotion/styled framer-motion 
+    # Package Installer
+    ReactPackageJS
 
     "src/components/elements", "src/components/fragments", "src/components/layouts", "src/libs", "src/libs/axios", "src/features", "src/features/product", "src/features/user", "src/pages", "public/assets/images", "public/assets/videos", "public/assets/audios" | ForEach-Object { New-Item -Path $_ -ItemType Directory -Force }
 
     Remove-Item -Path src\App.css
-    New-Item -Path src\components\Providers.jsx
 
     $appJsxContent = @"
 import { Heading, Text, Flex } from '@chakra-ui/react';
@@ -41,6 +43,7 @@ export default function App() {
     );
 }
 "@
+    Set-Content -Path src\App.jsx -Value $appJsxContent
 
     $providersJsxContent = @"
 /* eslint-disable react/prop-types */
@@ -59,6 +62,7 @@ export default function Providers({ children }) {
     )
 }
 "@
+    Set-Content -Path src\components\Providers.jsx -Value $providersJsxContent
 
     $mainJsxContent = @"
 import React from 'react'
@@ -75,12 +79,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>,
 )
 "@
+    Set-Content -Path src\main.jsx -Value $mainJsxContent
 
     $indexCssContent = @"
 "@
-    Set-Content -Path src\App.jsx -Value $appJsxContent
-    Set-Content -Path src\components\Providers.jsx -Value $providersJsxContent
-    Set-Content -Path src\main.jsx -Value $mainJsxContent
     Set-Content -Path src\index.css -Value $indexCssContent
 
     code .

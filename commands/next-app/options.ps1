@@ -16,7 +16,7 @@ function Initialize-NextApp {
                 $projectName = Read-Host "Enter the project name"
                 
                 $router = if ($selectedRouter -eq "App Router") { "App" } else { "Page" }
-                $style = $selectedStyle.ToLower().Replace(" ", "-")
+                $style = $selectedStyle.Replace(" ", "")
                 $language = $selectedLanguage
                 
                 Initialize-NextAppCommand -Router $router -Style $style -Language $language -ProjectName $projectName

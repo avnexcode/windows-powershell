@@ -14,8 +14,9 @@ function Initialize-ViteApp {
                 if ($selectedLanguage -eq "Back") { break }
 
                 $projectName = Read-Host "Enter the project name"
+                $style = $selectedStyle.ToLower().Replace(" ", "")
                 
-                Initialize-ViteAppCommand -Framework $selectedFramework -Style $selectedStyle -Language $selectedLanguage -ProjectName $projectName
+                Initialize-ViteAppCommand -Framework $selectedFramework -Style $style -Language $selectedLanguage -ProjectName $projectName
                 return
             }
         }

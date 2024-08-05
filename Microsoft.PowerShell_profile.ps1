@@ -13,7 +13,7 @@ function Show-Commands {
 
     function Show-Menu {
         Clear-Host
-        Write-Host "Malas Setup sendiri dek?"
+        Show-Version -ToolName "Prot Prot Tool" -Version "Beta Test 1.0.0"
         Write-Host "Select an action to run (use arrow keys to navigate and Enter to select): "
         for ($i = 0; $i -lt $options.Count; $i++) {
             if ($i -eq $selectedIndex) {
@@ -40,10 +40,10 @@ function Show-Commands {
             }
             13 { # Enter
                 switch ($selectedIndex) {
-                    0 { Initialize-NextApp }
-                    1 { Initialize-ViteApp }  
-                    2 { Initialize-PHPProject }
-                    3 { Initialize-JSProject }
+                    0 { Initialize-NextApp; return }
+                    1 { Initialize-ViteApp; return }  
+                    2 { Initialize-PHPProject; return }
+                    3 { Initialize-JSProject; return }
                     4 { 
                         $gitAliasesContent = Get-Content "$HOME/.windows-setup/commands/.git-aliases.ps1"
                         $gitAliasesContent | ForEach-Object { Write-Host $_ }

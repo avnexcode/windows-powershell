@@ -4,29 +4,30 @@ function ReactBaseJS {
         [string]$Project_Name
     )
 
-    $Project_Name = $Project_Name.ToLower().Replace(" ", "_")
+    $Project_Name = $Project_Name.ToLower().Replace(" ", "-")
 
     pnpm create vite $Project_Name --template react
     Set-Location $Project_Name
     pnpm install
-    pnpm add axios @tanstack/react-query formik react-router-dom react-icons
+    # Package Installer
+    ReactPackageJS
 
     "src/components/elements", "src/components/fragments", "src/components/layouts", "src/libs", "src/libs/axios", "src/features", "src/features/product", "src/features/user", "src/pages", "public/assets/images", "public/assets/videos", "public/assets/audios" | ForEach-Object { New-Item -Path $_ -ItemType Directory -Force }
 
     Remove-Item -Path src\App.css
-    New-Item -Path src\components\Providers.jsx
 
     $appJsxContent = @"
 export default function App() {
     return (
-        <div className="bg-blue-500 text-white p-4 w-full h-screen flex justify-center items-center flex-col gap-5">
-            <h1 className="text-3xl font-bold uppercase">Avnexcode</h1>
-            <h1 className="text-3xl font-bold"><span className="uppercase">Prot Prot</span> Builder</h1>
-            <h1 className="text-3xl font-bold">React JS Vite x TailwindCSS Builder</h1>
+        <div class="container">
+            <h1 class="title">Avnexcode</h1>
+            <h1 class="title"><span>Prot Prot</span> Builder</h1>
+            <h1 class="title">Next JS App Router Builder</h1>
         </div>
     );
 }
 "@
+    Set-Content -Path src\App.jsx -Value $appJsxContent
 
     $providersJsxContent = @"
 /* eslint-disable react/prop-types */
@@ -42,6 +43,7 @@ export default function Providers({ children }) {
     )
 }
 "@
+    Set-Content -Path src\components\Providers.jsx -Value $providersJsxContent
 
     $mainJsxContent = @"
 import React from 'react'
@@ -58,13 +60,34 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>,
 )
 "@
+    Set-Content -Path src\main.jsx -Value $mainJsxContent
 
     $indexCssContent = @"
+.container {
+    background-color: #3b82f6; /* bg-blue-500 */
+    color: white; /* text-white */
+    padding: 1rem; /* p-4 */
+    width: 100%; /* w-full */
+    height: 100vh; /* h-screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.25rem; /* gap-5 */
+}
+
+.title {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: bold; /* font-bold */
+    text-transform: uppercase; /* uppercase */
+}
+
+.title span {
+    text-transform: uppercase; /* uppercase */
+}
 "@
-    Set-Content -Path src\App.jsx -Value $appJsxContent
-    Set-Content -Path src\components\Providers.jsx -Value $providersJsxContent
-    Set-Content -Path src\main.jsx -Value $mainJsxContent
     Set-Content -Path src\index.css -Value $indexCssContent
+
     code .
     pnpm run dev
 }

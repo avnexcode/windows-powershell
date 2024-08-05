@@ -4,19 +4,20 @@ function ReactTailwindTS {
         [string]$Project_Name
     )
 
-    $Project_Name = $Project_Name.ToLower().Replace(" ", "_")
+    $Project_Name = $Project_Name.ToLower().Replace(" ", "-")
 
     pnpm create vite $Project_Name --template react-ts
     Set-Location $Project_Name
     pnpm install
+    # Style Installer
     pnpm add -D tailwindcss postcss autoprefixer
-    pnpm add axios @tanstack/react-query formik react-router-dom @types/react-router-dom react-icons
+    # Package Installer
+    ReactPackageTS
     npx tailwindcss init -p
 
     "src/components/elements", "src/components/fragments", "src/components/layouts", "src/libs", "src/libs/axios", "src/features", "src/features/product", "src/features/user", "src/types", "src/pages", "public/assets/images", "public/assets/videos", "public/assets/audios" | ForEach-Object { New-Item -Path $_ -ItemType Directory -Force }
 
     Remove-Item -Path src\App.css
-    New-Item -Path src\components\Providers.tsx
 
     $appTsxContent = @"
 export default function App() {
@@ -29,6 +30,7 @@ export default function App() {
     );
 }
 "@
+    Set-Content -Path src\App.tsx -Value $appTsxContent
     
     $tailwindConfigContent = @"
 /** @type {import('tailwindcss').Config} */
@@ -43,6 +45,7 @@ export default {
   plugins: [],
 }
 "@
+    Set-Content -Path tailwind.config.js -Value $tailwindConfigContent
 
     $providersTsxContent = @"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -61,6 +64,7 @@ export default function Providers({ children }: ProvidersProps) {
     )
 }
 "@
+    Set-Content -Path src\components\Providers.tsx -Value $providersTsxContent
     
     $mainTsxContent = @"
 import React from 'react'
@@ -77,16 +81,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   </React.StrictMode>,
 )
 "@
+    Set-Content -Path src\main.tsx -Value $mainTsxContent
 
     $indexCssContent = @"
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 "@
-    Set-Content -Path src\App.tsx -Value $appTsxContent
-    Set-Content -Path tailwind.config.js -Value $tailwindConfigContent
-    Set-Content -Path src\components\Providers.tsx -Value $providersTsxContent
-    Set-Content -Path src\main.tsx -Value $mainTsxContent
     Set-Content -Path src\index.css -Value $indexCssContent
 
     code .

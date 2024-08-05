@@ -10,6 +10,7 @@
 
 # Others
 . $HOME/.windows-setup/secret/Credentials-File.ps1
+. $HOME/.windows-setup/commands/show-version/Show-Version.ps1
 
 ### Import Options
 

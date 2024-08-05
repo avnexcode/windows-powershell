@@ -1,41 +1,34 @@
-# Project Setup
+# Display Awal
 
-This project requires the following tools to be installed:
+![Tool Banner](path_to_your_image)
 
-## Prerequisites
+## Description
 
-### Oh My Posh / Starship
-You can use either Oh My Posh or Starship for your shell prompt customization.
+A tool designed to build applications with initial configurations for Axios, TanStack/React-Query, Formik, React-Router-Dom, React-Icons, and Zod.
 
-- **Starship**
-  - Download and installation instructions: [Starship Installation Guide](https://starship.rs/installing/)
+## Required Packages
 
-- **Oh My Posh**
-  - Download and installation instructions: [Oh My Posh Installation Guide](https://ohmyposh.dev/docs/installation/windows)
+**Optional:**
+- [Chocolatey](https://chocolatey.org/install)
+- [Scoop](https://scoop.sh/)
 
-### Zoxide
-Zoxide is a smarter cd command, inspired by z and autojump.
+**Mandatory:**
+- [Node.js](https://nodejs.org/en/download/package-manager)
+- [Zoxide](https://github.com/ajeetdsouza/zoxide)
+- [FZF](https://github.com/junegunn/fzf)
+- [Oh-My-Posh](https://ohmyposh.dev/docs/installation/windows) or [Starship](https://starship.rs/guide/)
+- PowerShell version 7++
 
-- Download and installation instructions: [Zoxide Installation Guide](https://github.com/ajeetdsouza/zoxide)
+## Installation
 
-### Fzf
-Fzf is a general-purpose command-line fuzzy finder.
-
-- Download and installation instructions: [Fzf Installation Guide](https://github.com/junegunn/fzf)
-
-## Setup Instructions
-
-1. Follow the installation guides for each prerequisite tool listed above.
-2. Configure your shell to use the installed tools as per their documentation.
+1. Clone the repository into the currently active user's folder on Windows.
+2. Import the main package `Microsoft.PowerShell_profile.ps1` into your PowerShell `$PROFILE`.
+3. Restart the terminal.
 
 ## Usage
 
-Once you have all the prerequisites installed and configured, you can start using the project by running the appropriate scripts and commands in your shell.
-
-For further customization and usage, refer to the documentation of each tool:
-- [Starship Documentation](https://starship.rs/guide/)
-- [Oh My Posh Documentation](https://ohmyposh.dev/docs/)
+Use the command `discommends` and follow the steps provided. For package configurations, follow the steps in the official documentation:
 - [Zoxide Documentation](https://github.com/ajeetdsouza/zoxide)
-- [Fzf Documentation](https://github.com/junegunn/fzf)
-
-Happy coding!
+- [FZF Documentation](https://github.com/junegunn/fzf)
+- [Oh-My-Posh Documentation](https://ohmyposh.dev/docs/installation/prompt)
+- [Starship Documentation](https://starship.rs/config/)
