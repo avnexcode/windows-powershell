@@ -1,6 +1,6 @@
 # Display Awal
 
-![Tool Banner]("./docs/images/display.png")
+![Tool Banner](./docs/images/display.png)
 
 ## Description
 
