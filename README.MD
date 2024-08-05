@@ -1,6 +1,6 @@
 # Display Awal
 
-![Tool Banner](path_to_your_image)
+![Tool Banner]("./docs/images/display.png")
 
 ## Description
 
