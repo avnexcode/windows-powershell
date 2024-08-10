@@ -1,6 +1,6 @@
 function Initialize-JSProject {
     . $HOME/.windows-setup/commands/js-app/Modules-import.ps1
-    $styleOptions = @("Basic", "Sass", "Tailwind", "Back")
+    $styleOptions = @("Base", "Sass", "Tailwind", "Back")
     $selectedStyleIndex = 0
     $currentMenu = "style"
 
@@ -50,7 +50,7 @@ function Initialize-JSProject {
                     $projectName = Read-Host "Enter the project name"
 
                     switch ($style) {
-                        "basic" { JSBase -Project_Name $projectName }
+                        "base" { JSBase -Project_Name $projectName }
                         "sass" { JSSass -Project_Name $projectName }
                         "tailwind" { JSTailwind -Project_Name $projectName }
                     }

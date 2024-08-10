@@ -1,5 +1,5 @@
 function ReactPackageJS {
-    pnpm add axios @tanstack/react-query formik react-router-dom react-icons zod
+    pnpm add axios @tanstack/react-query formik react-router-dom react-icons
 }
 
 function ReactPackageTS {
@@ -7,7 +7,7 @@ function ReactPackageTS {
 }
 
 function NextPackageJS {
-    pnpm add axios @tanstack/react-query formik react-icons zod
+    pnpm add axios @tanstack/react-query formik react-icons
 }
 
 function NextPackageTS {

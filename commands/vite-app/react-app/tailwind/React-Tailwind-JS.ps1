@@ -17,7 +17,7 @@ function ReactTailwindJS {
 
     "src/components/elements", "src/components/fragments", "src/components/layouts", "src/libs", "src/libs/axios", "src/features", "src/features/product", "src/features/user", "src/pages", "public/assets/images", "public/assets/videos", "public/assets/audios" | ForEach-Object { New-Item -Path $_ -ItemType Directory -Force }
 
-    Remove-Item -Path src\App.css
+    Remove-Item -Path src/App.css
 
     $appJsxContent = @"
 export default function App() {
@@ -30,7 +30,7 @@ export default function App() {
     );
 }
 "@
-    Set-Content -Path src\App.jsx -Value $appJsxContent
+    Set-Content -Path src/App.jsx -Value $appJsxContent
 
     $tailwindConfigContent = @"
 /** @type {import('tailwindcss').Config} */
@@ -61,14 +61,14 @@ export default function Providers({ children }) {
     )
 }
 "@
-    Set-Content -Path src\components\Providers.jsx -Value $providersJsxContent
+    Set-Content -Path src/components/layouts/Providers.jsx -Value $providersJsxContent
     
     $mainJsxContent = @"
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import Providers from "./components/Providers.jsx"
+import Providers from "./components/layouts/Providers.jsx"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -78,14 +78,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>,
 )
 "@
-    Set-Content -Path src\main.jsx -Value $mainJsxContent
+    Set-Content -Path src/main.jsx -Value $mainJsxContent
 
     $indexCssContent = @"
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 "@
-    Set-Content -Path src\index.css -Value $indexCssContent
+    Set-Content -Path src/index.css -Value $indexCssContent
     
     code .
     pnpm run dev

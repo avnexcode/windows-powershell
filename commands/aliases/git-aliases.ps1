@@ -1,62 +1,66 @@
 function gs { git status }
+
 function ga {
     param (
-        [Parameter(ValueFromRemainingArguments = $true)]
+        [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
         [string[]]$Paths
     )
-    git add $Paths
+    git add @Paths
 }
-function gc {
+
+function gcam {
     param (
-        [Parameter(Mandatory = $true)]
-        [string]$Message
+        [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
+        [string[]]$Message
     )
-    git commit -m $Message
+    git commit -am @Message
 }
+
 function gco {
     param (
-        [Parameter(Mandatory = $true)]
-        [string]$Branch
+        [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
+        [string[]]$Branch
     )
-    git checkout $Branch
+    git checkout @Branch
 }
+
 function gb { git branch }
+
 function gcl {
     param (
-        [Parameter(Mandatory = $true)]
-        [string]$Repository
+        [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
+        [string[]]$Repository
     )
-    git clone $Repository
+    git clone @Repository
 }
-function gp { git pull }
-function gpsh { git push }
+
 function gpl { git pull }
-function gd {
+
+function gpsh { 
     param (
-        [Parameter(ValueFromRemainingArguments = $true)]
-        [string[]]$Paths
+        [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
+        [string[]]$Branch
     )
-    git diff $Paths
+    git push -u origin @Branch
 }
+
+# function gd {
+#     param (
+#         [Parameter(ValueFromRemainingArguments = $true)]
+#         [string[]]$Paths
+#     )
+#     git diff $Paths
+# }
+
 function glog {
     param (
         [Parameter(ValueFromRemainingArguments = $true)]
         [string[]]$Arguments
     )
-    git log $Arguments
-}
-function graph {
-    git log --all --oneline --decorate --graph
+    git log @Arguments
 }
 
-# Alias untuk operasi Git yang sering digunakan
-function gcam {
-    param (
-        [Parameter(Mandatory = $true)]
-        [string]$Message
-    )
-    git commit -am $Message
-}
+# # Alias untuk operasi Git yang sering digunakan
 function gcb {
     param (
         [Parameter(Mandatory = $true)]
@@ -64,58 +68,59 @@ function gcb {
     )
     git checkout -b $Branch
 }
-function gbd {
-    param (
-        [Parameter(Mandatory = $true)]
-        [string]$Branch
-    )
-    git branch -d $Branch
-}
-function gbD {
-    param (
-        [Parameter(Mandatory = $true)]
-        [string]$Branch
-    )
-    git branch -D $Branch
-}
-function gpf { git push --force }
 
-# Alias untuk penggabungan (merge) dan rebasing
-function gm {
-    param (
-        [Parameter(ValueFromRemainingArguments = $true)]
-        [string[]]$Arguments
-    )
-    git merge $Arguments
-}
-function gr {
-    param (
-        [Parameter(ValueFromRemainingArguments = $true)]
-        [string[]]$Arguments
-    )
-    git rebase $Arguments
-}
-function gri { git rebase -i }
-function grc { git rebase --continue }
-function gra { git rebase --abort }
+# function gbd {
+#     param (
+#         [Parameter(Mandatory = $true)]
+#         [string]$Branch
+#     )
+#     git branch -d $Branch
+# }
+# function gbD {
+#     param (
+#         [Parameter(Mandatory = $true)]
+#         [string]$Branch
+#     )
+#     git branch -D $Branch
+# }
+# function gpf { git push --force }
 
-# Alias untuk pengelolaan remote
-function grem { git remote }
-function gset {
-    param (
-        [Parameter(Mandatory = $true)]
-        [string]$RemoteName,
-        [Parameter(Mandatory = $true)]
-        [string]$URL
-    )
-    git remote set-url $RemoteName $URL
-}
-function gpr { git pull --rebase }
+# # Alias untuk penggabungan (merge) dan rebasing
+# function gm {
+#     param (
+#         [Parameter(ValueFromRemainingArguments = $true)]
+#         [string[]]$Arguments
+#     )
+#     git merge $Arguments
+# }
+# function gr {
+#     param (
+#         [Parameter(ValueFromRemainingArguments = $true)]
+#         [string[]]$Arguments
+#     )
+#     git rebase $Arguments
+# }
+# function gri { git rebase -i }
+# function grc { git rebase --continue }
+# function gra { git rebase --abort }
 
-# Alias untuk tindakan tambahan
-function gundo { git reset --soft HEAD^ }
-function grs { git reset --hard HEAD }
-function gcln { git clean -df }
+# # Alias untuk pengelolaan remote
+# function grem { git remote }
+# function gset {
+#     param (
+#         [Parameter(Mandatory = $true)]
+#         [string]$RemoteName,
+#         [Parameter(Mandatory = $true)]
+#         [string]$URL
+#     )
+#     git remote set-url $RemoteName $URL
+# }
+# function gpr { git pull --rebase }
+
+# # Alias untuk tindakan tambahan
+# function gundo { git reset --soft HEAD^ }
+# function grs { git reset --hard HEAD }
+# function gcln { git clean -df }
 
 # Alias Others
 function graph {

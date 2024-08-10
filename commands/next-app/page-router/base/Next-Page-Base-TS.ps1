@@ -29,12 +29,12 @@ export default function Providers({ children }: ProvidersProps) {
     )
 }
 "@
-    Set-Content -Path src/components/Providers.tsx -Value $providersContent
+    Set-Content -Path src/components/layouts/Providers.tsx -Value $providersContent
 
     $appTsxLayout = @"
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import Providers from "@/components/Providers";
+import Providers from "@/components/layouts/Providers";
 
 export default function App({ Component, pageProps }: AppProps) {
   return <Providers><Component {...pageProps} /></Providers>;
@@ -57,6 +57,12 @@ export default function App() {
     Set-Content -Path src/pages/index.tsx -Value $appTsxContent
 
     $indexCssContent = @"
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
 .container {
     background-color: #3b82f6; /* bg-blue-500 */
     color: white; /* text-white */

@@ -34,12 +34,12 @@ export default function Providers({ children }: ProvidersProps) {
     )
 }
 "@
-    Set-Content -Path src/components/Providers.tsx -Value $providersContent
+    Set-Content -Path src/components/layouts/Providers.tsx -Value $providersContent
 
     $appTsxLayout = @"
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import Providers from "@/components/Providers";
+import Providers from "@/components/layouts/Providers";
 
 export default function App({ Component, pageProps }: AppProps) {
   return <Providers><Component {...pageProps} /></Providers>;

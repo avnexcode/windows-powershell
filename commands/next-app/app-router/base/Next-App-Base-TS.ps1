@@ -30,13 +30,13 @@ export default function Providers({ children }: ProvidersProps) {
     )
 }
 "@
-    Set-Content -Path src/app/Providers.tsx -Value $providersContent
+    Set-Content -Path src/components/layouts/Providers.tsx -Value $providersContent
 
     $apptsxLayout = @"
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Providers from "./Providers";
+import Providers from "@/components/layouts/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -75,6 +75,12 @@ export default function App() {
     Set-Content -Path src/app/page.tsx -Value $appTsxContent
 
     $indexCssContent = @"
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
 .container {
     background-color: #3b82f6; /* bg-blue-500 */
     color: white; /* text-white */

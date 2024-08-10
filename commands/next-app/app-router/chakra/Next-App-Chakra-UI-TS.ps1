@@ -35,13 +35,13 @@ export default function Providers({ children }: ProvidersProps) {
     )
 }
 "@
-    Set-Content -Path src/app/Providers.tsx -Value $providersContent
+    Set-Content -Path src/components/layouts/Providers.tsx -Value $providersContent
 
     $apptsxLayout = @"
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Providers from "./Providers";
+import Providers from "@/components/layouts/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -1,10 +1,10 @@
 function exp {
     param ( [Parameter(Mandatory = $false)] [string]$Path )
     if ([string]::IsNullOrWhiteSpace($Path)) {
-        Start-Process "explorer.exe" 
+        Start-Process "explorer" 
     }
     else {
-        Start-Process "explorer.exe" $Path 
+        Start-Process "explorer" $Path 
     }
 }
 
@@ -46,6 +46,34 @@ function g {
     }
 }
 
-function pingg {
+function pings {
     ping 8.8.8.8 -t
+}
+
+function chr {
+    Start-Process "chrome"
+}
+
+function dc {
+    Start-Process "C:\Users\axnve\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Discord Inc\Discord"
+}
+
+function wa {
+    Start-Process "shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App"
+}   
+
+function spt {
+    Start-Process "C:\Users\axnve\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Spotify"
+}
+
+function obs {
+    Start-Process "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\OBS Studio\OBS Studio (64bit)"
+}
+
+function startall {
+    dc
+    spt
+    chr
+    wa
+    exp
 }

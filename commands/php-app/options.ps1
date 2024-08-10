@@ -1,6 +1,6 @@
 function Initialize-PHPProject {
     . $HOME/.windows-setup/commands/php-app/Modules-Import.ps1
-    $styleOptions = @("Basic", "Sass", "Tailwind", "Back")
+    $styleOptions = @("Base", "Sass", "Tailwind", "Back")
     $selectedStyleIndex = 0
     $currentMenu = "style"
 
@@ -44,7 +44,7 @@ function Initialize-PHPProject {
                 $projectName = Read-Host "Enter the project name"
                 
                 switch ($style) {
-                    "basic" { PHPBase -Project_Name $projectName }
+                    "base" { PHPBase -Project_Name $projectName }
                     "sass" { PHPSass -Project_Name $projectName }
                     "tailwind" { PHPTailwind -Project_Name $projectName }
                 }

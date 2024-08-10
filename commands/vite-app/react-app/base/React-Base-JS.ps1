@@ -14,20 +14,20 @@ function ReactBaseJS {
 
     "src/components/elements", "src/components/fragments", "src/components/layouts", "src/libs", "src/libs/axios", "src/features", "src/features/product", "src/features/user", "src/pages", "public/assets/images", "public/assets/videos", "public/assets/audios" | ForEach-Object { New-Item -Path $_ -ItemType Directory -Force }
 
-    Remove-Item -Path src\App.css
+    Remove-Item -Path src/App.css
 
     $appJsxContent = @"
 export default function App() {
     return (
-        <div class="container">
-            <h1 class="title">Avnexcode</h1>
-            <h1 class="title"><span>Prot Prot</span> Builder</h1>
-            <h1 class="title">Next JS App Router Builder</h1>
+        <div className="container">
+            <h1 className="title">Avnexcode</h1>
+            <h1 className="title"><span>Prot Prot</span> Builder</h1>
+            <h1 className="title">Next JS App Router Builder</h1>
         </div>
     );
 }
 "@
-    Set-Content -Path src\App.jsx -Value $appJsxContent
+    Set-Content -Path src/App.jsx -Value $appJsxContent
 
     $providersJsxContent = @"
 /* eslint-disable react/prop-types */
@@ -43,14 +43,14 @@ export default function Providers({ children }) {
     )
 }
 "@
-    Set-Content -Path src\components\Providers.jsx -Value $providersJsxContent
+    Set-Content -Path src/components/layouts/Providers.jsx -Value $providersJsxContent
 
     $mainJsxContent = @"
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import Providers from "./components/Providers.jsx"
+import Providers from "./components/layouts/Providers.jsx"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -60,9 +60,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>,
 )
 "@
-    Set-Content -Path src\main.jsx -Value $mainJsxContent
+    Set-Content -Path src/main.jsx -Value $mainJsxContent
 
     $indexCssContent = @"
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
 .container {
     background-color: #3b82f6; /* bg-blue-500 */
     color: white; /* text-white */
@@ -86,7 +92,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     text-transform: uppercase; /* uppercase */
 }
 "@
-    Set-Content -Path src\index.css -Value $indexCssContent
+    Set-Content -Path src/index.css -Value $indexCssContent
 
     code .
     pnpm run dev
