@@ -1,4 +1,4 @@
-. $HOME/.windows-setup/Modules-Import.ps1
+. $HOME/windows-powershell/Modules-Import.ps1
 function Show-Commands {
     $options = @(
         "1. Create Next App",
@@ -45,7 +45,7 @@ function Show-Commands {
                     2 { Initialize-PHPProject }
                     3 { Initialize-JSProject }
                     4 { 
-                        $gitAliasesContent = Get-Content "$HOME/.windows-setup/commands/.git-aliases.ps1"
+                        $gitAliasesContent = Get-Content "$HOME/windows-powershell/commands/.git-aliases.ps1"
                         $gitAliasesContent | ForEach-Object { Write-Host $_ }
                         Read-Host "Press Enter to continue"
                     }

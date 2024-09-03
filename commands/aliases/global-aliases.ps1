@@ -54,7 +54,15 @@ function chr {
     Start-Process "chrome"
 }
 
+function chrome {
+    Start-Process "chrome"
+}
+
 function dc {
+    Start-Process "C:\Users\axnve\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Discord Inc\Discord"
+}
+
+function discord {
     Start-Process "C:\Users\axnve\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Discord Inc\Discord"
 }
 
@@ -62,7 +70,15 @@ function wa {
     Start-Process "shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App"
 }   
 
+function whatsapp {
+    Start-Process "shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App"
+}   
+
 function spt {
+    Start-Process "C:\Users\axnve\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Spotify"
+}
+
+function spotify {
     Start-Process "C:\Users\axnve\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Spotify"
 }
 
