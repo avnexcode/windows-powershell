@@ -3,6 +3,7 @@
 . $HOME/windows-powershell/configs/Oh-My-Posh.ps1
 . $HOME/windows-powershell/configs/Zoxide.ps1
 . $HOME/windows-powershell/configs/Powershell.ps1
+. $HOME/windows-powershell/configs/terminal-icons.ps1
 
 # Aliases
 . $HOME/windows-powershell/commands/aliases/Git-Aliases.ps1
